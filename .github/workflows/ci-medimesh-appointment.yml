@@ -44,16 +44,14 @@ on:
   push:
     branches: [main]
     paths:
-      - "services/medimesh-appointment/**"
-      - ".github/workflows/ci-medimesh-appointment.yml"
-      - ".github/workflows/template-ci.yml"
+      - "**"
+      - ".github/workflows/**"
 
   pull_request:
     branches: [main]
     paths:
-      - "services/medimesh-appointment/**"
-      - ".github/workflows/ci-medimesh-appointment.yml"
-      - ".github/workflows/template-ci.yml"
+      - "**"
+      - ".github/workflows/**"
 
 permissions:
   contents: write
@@ -64,12 +62,11 @@ jobs:
 
     with:
       service_name: medimesh-appointment
-      service_path: services/medimesh-appointment
+      service_path: .   # ✅ UPDATED
       docker_image_name: medimesh_medimesh-appointment
       sonar_project_key: medimesh-appointment
       node_version: "20"
 
-      # 🔥 NEW (VERY IMPORTANT)
       values_key: appointment
       manifest_repo: Medimesh-grp3/ArgoCDrepo
 
@@ -82,8 +79,6 @@ jobs:
       SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
       SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
       ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
-
-      # 🔥 REQUIRED FOR CD
       MANIFEST_REPO_PAT: ${{ secrets.MANIFEST_REPO_PAT }}
 
 # name: "CI/CD — medimesh-appointment"
