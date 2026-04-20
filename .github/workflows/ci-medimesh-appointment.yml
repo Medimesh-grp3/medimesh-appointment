@@ -62,13 +62,13 @@ jobs:
 
     with:
       service_name: medimesh-appointment
-      service_path: .   # ✅ UPDATED
+      service_path: .   
       docker_image_name: medimesh_medimesh-appointment
       sonar_project_key: medimesh-appointment
       node_version: "20"
 
       values_key: appointment
-      manifest_repo: Medimesh-grp3/ArgoCDrepo
+      manifest_repo: Medimesh-grp3/manifest_repo
 
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
